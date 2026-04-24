@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venda seu carro</title>
+    <link rel="stylesheet" href="style.css">
+    
+
+</head>
+<body>
+
+    <div class="cabecalho">
+        <div class="cabecalho-inner">
+            <span class="cabecalho-badge">🚗 Anuncie grátis</span>
+            <h1>Venda seu carro mais rápido</h1>
+            <p>Preencha os dados abaixo e alcance milhares de compradores</p>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <div class="form-header">
+            <span class="form-header-tab">Formulário</span>
+        </div>
+
+        <div class="form-body">
+            <h1 class="form-titulo">Venda fácil seu carro</h1>
+            <p class="form-subtitulo">Descreva as características do seu carro e marque os opcionais que ele possui</p>
+
+            <form id="formCarro">
+
+
+                <div class="secao-titulo">Anúncio</div>
+
+                <div class="caixaInputs">
+                    <label for="title">Título do anúncio <span class="campo-obrigatorio">*</span></label>
+                    <input type="text" name="title" id="title" placeholder="Ex: Honda Civic 2021 - Impecável" maxlength="60" required>
+                </div>
+
+                <div class="caixaInputs">
+                    <label for="preco">Preço <span class="campo-obrigatorio">*</span></label>
+                    <input type="number" name="preco" id="preco" placeholder="R$ 0,00" required>
+                </div>
+
+                <div class="caixaInputs">
+                    <label for="descricao">Descrição</label>
+                    <textarea name="descricao" id="descricao" placeholder="Descreva o estado do carro, histórico, diferenciais..."></textarea>
+                </div>
+
+
+                <div class="secao-titulo">Veículo</div>
+
+                <div class="grid-2">
+                    <div class="caixaInputs">
+                        <label for="marca">Marca <span class="campo-obrigatorio">*</span></label>
+                        <input type="text" name="marca" id="marca" placeholder="Ex: Toyota" required>
+                    </div>
+                    <div class="caixaInputs">
+                        <label for="modelo">Modelo <span class="campo-obrigatorio">*</span></label>
+                        <input type="text" name="modelo" id="modelo" placeholder="Ex: Corolla" required>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="caixaInputs">
+                        <label for="kilometragem">Quilometragem <span class="campo-obrigatorio">*</span></label>
+                        <input type="number" name="kilometragem" id="kilometragem" placeholder="Ex: 45000" required>
+                    </div>
+                    <div class="caixaInputs">
+                        <label for="data-compra">Ano / Data de Compra <span class="campo-obrigatorio">*</span></label>
+                        <input type="date" name="data-compra" id="data-compra" required>
+                    </div>
+                </div>
+
+
+                <div class="secao-titulo">Câmbio</div>
+
+                <div class="caixaInputs">
+                    <label>Tipo de Câmbio <span class="campo-obrigatorio">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-card">
+                            <input type="radio" name="marcha" value="manual" required>
+                            Manual
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="marcha" value="automatico">
+                            Automático
+                        </label>
+                    </div>
+                </div>
+
+
+                <div class="secao-titulo">Opcionais</div>
+
+                <div class="caixaOpcional">
+                    <ul class="listaOpcionais">
+                        <li>
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="opcional[]" value="airbag">
+                                <span class="checkbox-icon">🛡️</span>
+                                Airbag
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="opcional[]" value="alarme">
+                                <span class="checkbox-icon">🔔</span>
+                                Alarme
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="opcional[]" value="camera-re">
+                                <span class="checkbox-icon">📷</span>
+                                Câmera de Ré
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="opcional[]" value="ar-condicionado">
+                                <span class="checkbox-icon">❄️</span>
+                                Ar-condicionado
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+
+                <p class="nota-obrigatorio">Campos com <span>*</span> são obrigatórios</p>
+
+                <button type="submit" class="btn-enviar" onclick="salvarCarros(event)">Publicar anúncio</button>
+                <button type="reset" class="btn-secundario">Limpar formulário</button>
+
+            </form>
+
+
+            <div id="listarCarros"></div>
+
+        </div>
+    </div>
+
+    <script src="script.js" ></script>
+
+</body>
+</html>

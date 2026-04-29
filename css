@@ -1,144 +1,359 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Venda seu carro</title>
-    <link rel="stylesheet" href="style.css">
-    
+:root {
+            --purple: #5c35a8;
+            --purple-light: #7c55c8;
+            --purple-soft: #f0ebfa;
+            --purple-border: #d4c5f0;
+            --text-dark: #1a1a2e;
+            --text-mid: #4a4a6a;
+            --text-light: #8888aa;
+            --bg: #f4f0fc;
+            --white: #ffffff;
+            --red: #e53e3e;
+            --success: #38a169;
+            --radius: 12px;
+            --radius-sm: 8px;
+            --shadow: 0 4px 24px rgba(92,53,168,0.10);
+            --shadow-sm: 0 2px 8px rgba(92,53,168,0.07);
+        }
 
-</head>
-<body>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <div class="cabecalho">
-        <div class="cabecalho-inner">
-            <span class="cabecalho-badge">🚗 Anuncie grátis</span>
-            <h1>Venda seu carro mais rápido</h1>
-            <p>Preencha os dados abaixo e alcance milhares de compradores</p>
-        </div>
-    </div>
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-dark);
+            min-height: 100vh;
+        }
 
-    <div class="form-container">
-        <div class="form-header">
-            <span class="form-header-tab">Formulário</span>
-        </div>
+        .cabecalho {
+            background: linear-gradient(135deg, var(--purple) 0%, var(--purple-light) 100%);
+            padding: 48px 40px 80px;
+            position: relative;
+            overflow: hidden;
+        }
 
-        <div class="form-body">
-            <h1 class="form-titulo">Venda fácil seu carro</h1>
-            <p class="form-subtitulo">Descreva as características do seu carro e marque os opcionais que ele possui</p>
+        .cabecalho::before {
+            content: '';
+            position: absolute;
+            top: -60px; right: -60px;
+            width: 260px; height: 260px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.07);
+        }
 
-            <form id="formCarro">
+        .cabecalho::after {
+            content: '';
+            position: absolute;
+            bottom: -40px; left: 10%;
+            width: 160px; height: 160px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+        }
 
+        .cabecalho-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
 
-                <div class="secao-titulo">Anúncio</div>
+        .cabecalho-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.25);
+            margin-bottom: 16px;
+        }
 
-                <div class="caixaInputs">
-                    <label for="title">Título do anúncio <span class="campo-obrigatorio">*</span></label>
-                    <input type="text" name="title" id="title" placeholder="Ex: Honda Civic 2021 - Impecável" maxlength="60" required>
-                </div>
+        .cabecalho h1 {
+            font-family: 'DM Serif Display', serif;
+            color: #fff;
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.2;
+        }
 
-                <div class="caixaInputs">
-                    <label for="preco">Preço <span class="campo-obrigatorio">*</span></label>
-                    <input type="number" name="preco" id="preco" placeholder="R$ 0,00" required>
-                </div>
+        .cabecalho p {
+            color: rgba(255,255,255,0.75);
+            margin-top: 8px;
+            font-size: 0.95rem;
+        }
 
-                <div class="caixaInputs">
-                    <label for="descricao">Descrição</label>
-                    <textarea name="descricao" id="descricao" placeholder="Descreva o estado do carro, histórico, diferenciais..."></textarea>
-                </div>
+        .form-container {
+            background: var(--white);
+            max-width: 680px;
+            margin: -48px auto 60px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+        }
 
+        .form-header {
+            display: flex;
+            border-bottom: 1px solid #ededf5;
+            padding: 0 32px;
+        }
 
-                <div class="secao-titulo">Veículo</div>
+        .form-header-tab {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--purple);
+            padding: 16px 0;
+            border-bottom: 2.5px solid var(--purple);
+            margin-bottom: -1px;
+        }
 
-                <div class="grid-2">
-                    <div class="caixaInputs">
-                        <label for="marca">Marca <span class="campo-obrigatorio">*</span></label>
-                        <input type="text" name="marca" id="marca" placeholder="Ex: Toyota" required>
-                    </div>
-                    <div class="caixaInputs">
-                        <label for="modelo">Modelo <span class="campo-obrigatorio">*</span></label>
-                        <input type="text" name="modelo" id="modelo" placeholder="Ex: Corolla" required>
-                    </div>
-                </div>
+        .form-body {
+            padding: 36px 40px 48px;
+        }
 
-                <div class="grid-2">
-                    <div class="caixaInputs">
-                        <label for="kilometragem">Quilometragem <span class="campo-obrigatorio">*</span></label>
-                        <input type="number" name="kilometragem" id="kilometragem" placeholder="Ex: 45000" required>
-                    </div>
-                    <div class="caixaInputs">
-                        <label for="data-compra">Ano / Data de Compra <span class="campo-obrigatorio">*</span></label>
-                        <input type="date" name="data-compra" id="data-compra" required>
-                    </div>
-                </div>
+        .form-titulo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.7rem;
+            font-weight: 400;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
 
+        .form-subtitulo {
+            color: var(--text-mid);
+            font-size: 0.9rem;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
 
-                <div class="secao-titulo">Câmbio</div>
+        .secao-titulo {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin: 32px 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-                <div class="caixaInputs">
-                    <label>Tipo de Câmbio <span class="campo-obrigatorio">*</span></label>
-                    <div class="radio-group">
-                        <label class="radio-card">
-                            <input type="radio" name="marcha" value="manual" required>
-                            Manual
-                        </label>
-                        <label class="radio-card">
-                            <input type="radio" name="marcha" value="automatico">
-                            Automático
-                        </label>
-                    </div>
-                </div>
+        .secao-titulo::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #ededf5;
+        }
 
+        .caixaInputs {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
 
-                <div class="secao-titulo">Opcionais</div>
+        .caixaInputs label {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-mid);
+        }
 
-                <div class="caixaOpcional">
-                    <ul class="listaOpcionais">
-                        <li>
-                            <label class="checkbox-card">
-                                <input type="checkbox" name="opcional[]" value="airbag">
-                                <span class="checkbox-icon">🛡️</span>
-                                Airbag
-                            </label>
-                        </li>
-                        <li>
-                            <label class="checkbox-card">
-                                <input type="checkbox" name="opcional[]" value="alarme">
-                                <span class="checkbox-icon">🔔</span>
-                                Alarme
-                            </label>
-                        </li>
-                        <li>
-                            <label class="checkbox-card">
-                                <input type="checkbox" name="opcional[]" value="camera-re">
-                                <span class="checkbox-icon">📷</span>
-                                Câmera de Ré
-                            </label>
-                        </li>
-                        <li>
-                            <label class="checkbox-card">
-                                <input type="checkbox" name="opcional[]" value="ar-condicionado">
-                                <span class="checkbox-icon">❄️</span>
-                                Ar-condicionado
-                            </label>
-                        </li>
-                    </ul>
-                </div>
+        .campo-obrigatorio {
+            color: var(--red);
+            margin-left: 2px;
+        }
 
-                <p class="nota-obrigatorio">Campos com <span>*</span> são obrigatórios</p>
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1.5px solid #e2dcf0;
+            border-radius: var(--radius-sm);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            color: var(--text-dark);
+            background: #faf9ff;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+            outline: none;
+        }
 
-                <button type="submit" class="btn-enviar" onclick="salvarCarros(event)">Publicar anúncio</button>
-                <button type="reset" class="btn-secundario">Limpar formulário</button>
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="date"]:focus,
+        textarea:focus {
+            border-color: var(--purple);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(92,53,168,0.10);
+        }
 
-            </form>
+        input::placeholder,
+        textarea::placeholder {
+            color: #bbb;
+        }
 
+        textarea {
+            resize: vertical;
+            min-height: 90px;
+            line-height: 1.5;
+        }
 
-            <div id="listarCarros"></div>
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
 
-        </div>
-    </div>
+        .radio-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 4px;
+        }
 
-    <script src="script.js" ></script>
+        .radio-card {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            border: 1.5px solid #e2dcf0;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+            font-size: 14px;
+            color: var(--text-mid);
+            font-weight: 500;
+            background: #faf9ff;
+        }
 
-</body>
-</html>
+        .radio-card:has(input:checked) {
+            border-color: var(--purple);
+            background: var(--purple-soft);
+            color: var(--purple);
+        }
+
+        .radio-card input[type="radio"] {
+            accent-color: var(--purple);
+            width: 16px;
+            height: 16px;
+        }
+
+        .caixaOpcional {
+            margin-top: 8px;
+        }
+
+        .listaOpcionais {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .listaOpcionais li {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-card {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 14px;
+            border: 1.5px solid #e2dcf0;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-mid);
+            background: #faf9ff;
+            width: 100%;
+        }
+
+        .checkbox-card:has(input:checked) {
+            border-color: var(--purple);
+            background: var(--purple-soft);
+            color: var(--purple);
+        }
+
+        .checkbox-card input[type="checkbox"] {
+            accent-color: var(--purple);
+            width: 15px;
+            height: 15px;
+            flex-shrink: 0;
+        }
+
+        .checkbox-icon {
+            font-size: 16px;
+            line-height: 1;
+        }
+
+        .btn-enviar {
+            width: 100%;
+            padding: 15px;
+            background: var(--purple);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 36px;
+            letter-spacing: 0.02em;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            box-shadow: 0 4px 16px rgba(92,53,168,0.25);
+        }
+
+        .btn-enviar:hover {
+            background: var(--purple-light);
+            box-shadow: 0 6px 20px rgba(92,53,168,0.35);
+            transform: translateY(-1px);
+        }
+
+        .btn-enviar:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(92,53,168,0.20);
+        }
+
+        .btn-secundario {
+            width: 100%;
+            padding: 14px;
+            background: transparent;
+            color: var(--purple);
+            border: 1.5px solid var(--purple-border);
+            border-radius: var(--radius-sm);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .btn-secundario:hover {
+            background: var(--purple-soft);
+            border-color: var(--purple);
+        }
+
+        .nota-obrigatorio {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 20px;
+            text-align: right;
+        }
+        .nota-obrigatorio span {
+            color: var(--red);
+        }
